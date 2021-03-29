@@ -7,7 +7,7 @@ import * as moment from 'moment';
   styleUrls: ['./calendario.component.css'],
 })
 export class CalendarioComponent implements OnInit {
-  week: any = [
+  week: string[] = [
     'Lunes',
     'Martes',
     'Miercoles',
@@ -18,8 +18,8 @@ export class CalendarioComponent implements OnInit {
   ];
   constructor() {}
 
-  monthSelect: any[];
-  data = [];
+  monthSelect: object[];
+  data: object[] = [];
   dateSelect: any;
   yearMonth: string;
 
@@ -61,10 +61,19 @@ export class CalendarioComponent implements OnInit {
     }
   }
 
-  onDay(a: any) {
-    const object = Object.assign({}, { fecha: a });
-    this.data.push(object);
+  onDay(fecha: string) {
+    const object = Object.assign({}, { fecha });
+    if (!this.validacioFecha(fecha)) {
+      this.data.push(object);
+    }
+
     console.log(this.data);
+  }
+
+  validacioFecha(fecha: string) {
+    return this.data.some(
+      (code) => JSON.stringify(code) === JSON.stringify({ fecha })
+    );
   }
 
   // onMethod(method: string) {
