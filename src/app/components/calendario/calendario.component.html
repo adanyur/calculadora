@@ -1,0 +1,37 @@
+<!-- <button type="button" (click)="onMethod('A')">Aleatorio</button>
+<button type="button" (click)="onMethod('R')">Rango</button>
+<button type="button" (click)="onMethod('D')">Por dia</button> -->
+<div class="card">
+  <div class="card-head">
+    <h1 class="title">{{ yearMonth }}</h1>
+    <div class="card-button">
+      <img
+        (click)="changeMonth(-1)"
+        src="../../../../assets/icons/arrow-left.svg"
+      />
+      <img
+        (click)="changeMonth(1)"
+        src="../../../../assets/icons/arrow-rigth.svg"
+      />
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="grid-head">
+      <span class="grid-head-item" *ngFor="let day of week">{{
+        day | slice: 0:3
+      }}</span>
+    </div>
+    <div class="grid-container">
+      <ng-container *ngFor="let a of monthSelect; first as first">
+        <input type="checkbox" [id]="a.day" class="input-control-checkbox" />
+        <label
+          class="grid-items"
+          [style.gridColumnStart]="first ? a?.Week : 'auto'"
+          [for]="a.day"
+          (click)="onDay(a.date)"
+          >{{ a?.day }}</label
+        >
+      </ng-container>
+    </div>
+  </div>
+</div>
