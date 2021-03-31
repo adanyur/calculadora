@@ -22,6 +22,7 @@ export class CalendarioComponent implements OnInit {
   data: object[] = [];
   dateSelect: any;
   yearMonth: string;
+  changeModo: boolean = true;
 
   ngOnInit(): void {
     this.getDays();
@@ -40,10 +41,14 @@ export class CalendarioComponent implements OnInit {
       (day: any) => {
         day = +day + 1;
         const dayObject = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD');
+        const date = dayObject.format('YYYY-MM-DD');
+        const today = moment().format('YYYY-MM-DD');
+        const status = date === today ? true : false;
         return {
-          date: dayObject.format('YYYY-MM-DD'),
+          date,
           day: day,
           Week: dayObject.isoWeekday(),
+          status,
         };
       }
     );
@@ -61,13 +66,25 @@ export class CalendarioComponent implements OnInit {
     }
   }
 
-  onDay(fecha: string) {
-    const object = Object.assign({}, { fecha });
-    if (!this.validacioFecha(fecha)) {
-      this.data.push(object);
-    }
+  onToday() {
+    this.changeModo = true;
+    this.getDays();
+  }
 
-    console.log(this.data);
+  onDay(fecha: string, evento: MouseEvent) {
+    const { ctrlKey } = evento;
+    this.changeModo = !ctrlKey ? true : false;
+
+    if (this.changeModo) this.onAleatorio(fecha);
+  }
+
+  onAleatorio(fecha: string) {
+    const object = Object.assign({}, { fecha });
+    console.log(object);
+  }
+
+  onRangoFecha(fecha: string) {
+    const object = Object.assign({}, { fecha });
   }
 
   validacioFecha(fecha: string) {
@@ -75,16 +92,4 @@ export class CalendarioComponent implements OnInit {
       (code) => JSON.stringify(code) === JSON.stringify({ fecha })
     );
   }
-
-  // onMethod(method: string) {
-  //   switch (method) {
-  //     case 'A': {
-  //       Object.keys([...method]);
-  //     }
-  //     case 'R': {
-  //     }
-  //     case 'D': {
-  //     }
-  //   }
-  // }
 }

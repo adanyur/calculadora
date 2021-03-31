@@ -7,12 +7,14 @@
 .card {
   width: 100%;
   border-radius: 1.5rem;
-  padding: 2rem 2rem;
+  /* padding: 2rem 2rem; */
+  padding: 0.5rem 0.5rem;
 }
 
 .card-head {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  padding: 0.5rem;
 }
 
 .card-body {
@@ -21,17 +23,23 @@
 }
 
 .card-button {
-  width: 25%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .card-button img {
   cursor: pointer;
+  width: 35px;
+  height: 35px;
+}
+
+.card-button button {
+  width: 50%;
 }
 
 .title {
-  font-size: 40px;
+  font-size: 50px;
   color: #01a272;
   font-weight: 600;
   text-align: center;
@@ -43,11 +51,12 @@
 .grid-head {
   width: 100%;
   display: flex;
-  border: 1px solid;
   margin-bottom: 10px;
   border-radius: 1.5rem;
-  padding: 0.8rem;
-  background: #eee;
+  padding: 0.8rem 0;
+  background: #009b6e;
+  color: #fff;
+  font-size: 20px;
 }
 
 .grid-head-item {
@@ -59,18 +68,15 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin: 0;
-  padding: 0;
   width: 100%;
 }
 
 .grid-items {
   border-radius: 1.5rem;
-  padding: 0.8rem;
   cursor: pointer;
   text-align: center;
   margin: 0.3em;
-  border: 1px solid;
+  font-size: 20px;
 }
 
 .input-control-checkbox {
@@ -78,6 +84,34 @@
 }
 
 .input-control-checkbox:checked + .grid-items {
-  background-color: red;
+  background-color: #f0c882;
   transition: 0.9s;
+}
+
+@media (min-width: 768px) and (min-width: 992px) {
+  .card {
+    padding: 2rem 2rem;
+  }
+
+  .card-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-button {
+    width: 50%;
+  }
+
+  .card-button img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .card-button button {
+    width: 10%;
+  }
+  .grid-items {
+    padding: 0.8rem;
+  }
 }
