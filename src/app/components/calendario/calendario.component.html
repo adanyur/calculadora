@@ -2,15 +2,20 @@
   <div class="card-head">
     <h1 class="title">{{ yearMonth }}</h1>
     <div class="card-button">
-      <button type="button" (click)="onToday()">Hoy</button>
-      <img
-        (click)="changeMonth(-1)"
-        src="../../../../assets/icons/arrow-left.svg"
-      />
-      <img
-        (click)="changeMonth(1)"
-        src="../../../../assets/icons/arrow-rigth.svg"
-      />
+      <div class="container-button">
+        <button type="button" class="btn" (click)="onToday()">Hoy</button>
+      </div>
+      <div class="container-icon">
+        <img
+          (click)="changeMonth(-1)"
+          src="../../../../assets/icons/arrow-left.svg"
+        />
+
+        <img
+          (click)="changeMonth(1)"
+          src="../../../../assets/icons/arrow-rigth.svg"
+        />
+      </div>
     </div>
   </div>
 
@@ -23,14 +28,8 @@
 
     <div class="grid-container">
       <ng-container *ngFor="let a of monthSelect; first as first">
-        <ng-container *ngIf="changeModo; else inputCheckbox">
-          <input
-            type="radio"
-            name="day"
-            [id]="a.day"
-            class="input-control-checkbox"
-            [checked]="a.status"
-          />
+        <ng-container *ngIf="modoAleatorio; else inputRadio">
+          <input type="checkbox" [id]="a.day" class="input-control-checkbox" />
         </ng-container>
 
         <label
@@ -40,8 +39,14 @@
           (click)="onDay(a.date, $event)"
           >{{ a?.day }}</label
         >
-        <ng-template #inputCheckbox>
-          <input type="checkbox" [id]="a.day" class="input-control-checkbox" />
+        <ng-template #inputRadio>
+          <input
+            type="radio"
+            name="day"
+            [id]="a.day"
+            class="input-control-checkbox"
+            [checked]="a.status"
+          />
         </ng-template>
       </ng-container>
     </div>

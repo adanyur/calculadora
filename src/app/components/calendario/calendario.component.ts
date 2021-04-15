@@ -22,7 +22,8 @@ export class CalendarioComponent implements OnInit {
   data: object[] = [];
   dateSelect: any;
   yearMonth: string;
-  changeModo: boolean = true;
+  modoAleatorio: boolean = false;
+  modoRango: boolean = false;
 
   ngOnInit(): void {
     this.getDays();
@@ -67,23 +68,28 @@ export class CalendarioComponent implements OnInit {
   }
 
   onToday() {
-    this.changeModo = true;
+    this.modoAleatorio = false;
+    this.modoRango = false;
     this.getDays();
   }
 
-  onDay(fecha: string, evento: MouseEvent) {
-    const { ctrlKey } = evento;
-    this.changeModo = !ctrlKey ? true : false;
+  onDay(fecha: any, evento: MouseEvent) {
+    const { ctrlKey, shiftKey } = evento;
+    this.modoAleatorio = ctrlKey;
+    if (this.modoAleatorio) this.onAleatorio(fecha);
+    // this.modoRango = shiftKey;
 
-    if (this.changeModo) this.onAleatorio(fecha);
+    // console.log(this.modoRango);
   }
 
   onAleatorio(fecha: string) {
-    const object = Object.assign({}, { fecha });
+    this.data.push({ fecha });
+    const object = Object.assign([], this.data);
     console.log(object);
   }
 
   onRangoFecha(fecha: string) {
+    console.log('rango');
     const object = Object.assign({}, { fecha });
   }
 

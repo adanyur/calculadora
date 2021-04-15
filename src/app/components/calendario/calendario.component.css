@@ -6,9 +6,9 @@
 
 .card {
   width: 100%;
-  border-radius: 1.5rem;
-  /* padding: 2rem 2rem; */
+  border-radius: 2rem;
   padding: 0.5rem 0.5rem;
+  box-shadow: 0 10px 25px rgba(92, 99, 105, 0.2);
 }
 
 .card-head {
@@ -30,12 +30,12 @@
 
 .card-button img {
   cursor: pointer;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 
 .card-button button {
-  width: 50%;
+  width: 100%;
 }
 
 .title {
@@ -75,7 +75,7 @@
   border-radius: 1.5rem;
   cursor: pointer;
   text-align: center;
-  margin: 0.3em;
+  margin: 0.2em;
   font-size: 20px;
 }
 
@@ -85,22 +85,34 @@
 
 .input-control-checkbox:checked + .grid-items {
   background-color: #f0c882;
-  transition: 0.9s;
+  transition: 0.3s;
+}
+
+.btn {
+  padding: 10px 0;
+  border-radius: 2rem;
+  border: none;
+  background-color: #828282;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
 }
 
 @media (min-width: 768px) and (min-width: 992px) {
   .card {
-    padding: 2rem 2rem;
+    padding: 10px;
+    width: 30%;
   }
 
   .card-head {
-    flex-direction: row;
+    padding: 0;
     align-items: center;
-    justify-content: space-between;
   }
 
   .card-button {
-    width: 50%;
+    width: 100%;
   }
 
   .card-button img {
@@ -108,10 +120,18 @@
     height: 40px;
   }
 
-  .card-button button {
-    width: 10%;
-  }
   .grid-items {
-    padding: 0.8rem;
+    margin: 0.1em;
+    font-size: 16px;
+    padding: 0.5rem;
+  }
+
+  .container-button,
+  .container-icon {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
   }
 }

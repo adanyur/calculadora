@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
+import { LayaoutComponent } from './components/layaout/layaout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    LayaoutComponent
   ],
   imports: [
     BrowserModule
